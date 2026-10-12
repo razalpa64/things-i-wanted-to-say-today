@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Fraunces", "Playfair Display", ui-serif, Georgia, serif;
+  --font-body: "Jost", "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --color-ivory: #fbf5ec;
+  --color-cream: #fffdf8;
+  --color-rose-muted: #d98e8e;
+  --color-rose-deep: #a33b3b;
+  --color-red-deep: #8f2a2e;
+  --color-peach: #f3c9a3;
+  --color-green-leaf: #6f8f6a;
+  --color-green-deep: #445c3f;
+  --color-ink: #3a302c;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-ivory);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: var(--color-rose-muted);
+  color: var(--color-cream);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-rose-deep);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.font-serif-display {
+  font-family: var(--font-serif);
+}
+
+.text-shadow-soft {
+  text-shadow: 0 1px 24px rgba(163, 59, 59, 0.12);
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--rot, 0deg));
+  }
+  50% {
+    transform: translateY(-14px) rotate(var(--rot, 0deg));
+  }
+}
+
+.animate-drift {
+  animation: drift 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-drift {
+    animation: none;
+  }
+}
+
+.grain-overlay {
+  background-image: radial-gradient(circle at 20% 20%, rgba(163, 59, 59, 0.05), transparent 40%),
+    radial-gradient(circle at 80% 60%, rgba(111, 143, 106, 0.06), transparent 45%);
+}
